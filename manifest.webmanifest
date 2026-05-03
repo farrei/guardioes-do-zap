@@ -1,0 +1,10 @@
+{
+  "name": "Guardiões do Zap",
+  "short_name": "Guardiões",
+  "description": "Jogo educativo anti-golpe para usuários iniciantes.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#031713",
+  "theme_color": "#075e54",
+  "icons": []
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#075e54" />
+  <meta name="description" content="Guardiões do Zap: jogo educativo para aprender a identificar golpes em mensagens e proteger contas." />
+  <title>Guardiões do Zap | Jogo Anti-Golpe</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Guardiões do Zap">
+      <span class="brand-icon">🛡️</span>
+      <span>Guardiões do Zap</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#jogar">Jogar</a>
+      <a href="#aprender">Aprender</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#certificado">Certificado</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Jogo educativo anti-golpe</p>
+        <h1>Aprenda a se proteger de golpes em mensagens.</h1>
+        <p class="hero-text">
+          Uma experiência simples, visual e interativa para usuários iniciantes treinarem como agir
+          diante de links suspeitos, pedidos urgentes, códigos de confirmação e falsas promessas.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#jogar">Começar treinamento</a>
+          <a class="button ghost" href="#aprender">Ver dicas rápidas</a>
+        </div>
+
+        <div class="stats">
+          <div><strong id="bestScore">0</strong><span>recorde</span></div>
+          <div><strong>8</strong><span>missões</span></div>
+          <div><strong>100%</strong><span>educativo</span></div>
+        </div>
+      </div>
+
+      <aside class="phone-card reveal" aria-label="Exemplo visual de conversa suspeita">
+        <div class="phone">
+          <div class="phone-top">
+            <span></span>
+            <strong>Mensagem recebida</strong>
+          </div>
+          <div class="chat-demo">
+            <p class="bubble other">Oi, sou do suporte. Me envie o código de 6 dígitos para confirmar sua conta.</p>
+            <p class="bubble me">🚨 Alerta: código de confirmação nunca deve ser compartilhado.</p>
+          </div>
+        </div>
+        <p class="phone-caption">Treine em segurança antes de encontrar um golpe real.</p>
+      </aside>
+    </section>
+
+    <section id="jogar" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Modo treinamento</p>
+        <h2>Você consegue proteger a conta?</h2>
+        <p>
+          Leia a mensagem simulada e escolha a melhor atitude. Quanto mais seguro for o comportamento,
+          maior será sua pontuação.
+        </p>
+      </div>
+
+      <div class="game-layout">
+        <div class="game-card reveal">
+          <div class="game-top">
+            <div><small>Pontos</small><strong id="score">0</strong></div>
+            <div><small>Vidas</small><strong id="lives">❤️❤️❤️</strong></div>
+            <div><small>Missão</small><strong id="round">1/8</strong></div>
+          </div>
+
+          <div class="scenario-tag" id="scenarioTag">Link suspeito</div>
+
+          <div class="chat-window">
+            <div class="chat-header">
+              <div class="avatar">?</div>
+              <div>
+                <strong id="senderName">Contato desconhecido</strong>
+                <small id="senderStatus">online agora</small>
+              </div>
+            </div>
+
+            <div class="messages" id="messages">
+              <p class="bubble other">Clique em iniciar para receber sua primeira missão.</p>
+            </div>
+          </div>
+
+          <div class="choices" id="choices">
+            <button class="choice" id="startGame">Iniciar jogo</button>
+          </div>
+
+          <div class="feedback" id="feedback"></div>
+        </div>
+
+        <aside class="coach-card reveal">
+          <div class="coach-face">🧓</div>
+          <h3>Modo usuário iniciante</h3>
+          <p id="coachText">
+            A regra é simples: desconfie de urgência, pedido de dinheiro, link estranho e código de confirmação.
+          </p>
+          <button class="button ghost full" id="largeMode">Ativar letras grandes</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="aprender" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Dicas rápidas</p>
+        <h2>Cartas anti-golpe.</h2>
+        <p>Toque nas cartas para virar e ver uma orientação simples.</p>
+      </div>
+
+      <div class="cards-grid">
+        <button class="learn-card reveal">
+          <span>🔗</span>
+          <strong>Link estranho</strong>
+          <p>Não clique em links recebidos de números desconhecidos ou mensagens com prêmio, brinde ou ameaça.</p>
+        </button>
+
+        <button class="learn-card reveal">
+          <span>🔐</span>
+          <strong>Código de confirmação</strong>
+          <p>Nunca compartilhe código recebido por SMS, ligação ou mensagem. Ele pode liberar sua conta para outra pessoa.</p>
+        </button>
+
+        <button class="learn-card reveal">
+          <span>💸</span>
+          <strong>Pedido de dinheiro</strong>
+          <p>Confirme por ligação ou pessoalmente antes de transferir. Golpistas fingem ser parentes e amigos.</p>
+        </button>
+
+        <button class="learn-card reveal">
+          <span>⏳</span>
+          <strong>Urgência falsa</strong>
+          <p>Golpe costuma pressionar: “é agora”, “última chance”, “sua conta será bloqueada”. Pare e verifique.</p>
+        </button>
+
+        <button class="learn-card reveal">
+          <span>🛡️</span>
+          <strong>Verificação em duas etapas</strong>
+          <p>Ative um PIN de segurança no aplicativo para dificultar invasões e proteger sua conta.</p>
+        </button>
+
+        <button class="learn-card reveal">
+          <span>🚫</span>
+          <strong>Bloquear e denunciar</strong>
+          <p>Se parecer golpe, bloqueie, denuncie e avise familiares para que ninguém caia na mesma tentativa.</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="checklist" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Checklist visual</p>
+        <h2>Antes de responder, faça o teste dos 5 segundos.</h2>
+      </div>
+
+      <div class="check-panel reveal">
+        <label><input type="checkbox"> Eu conheço esse número?</label>
+        <label><input type="checkbox"> A mensagem tem link estranho ou encurtado?</label>
+        <label><input type="checkbox"> A pessoa pediu código, senha ou PIN?</label>
+        <label><input type="checkbox"> Existe pedido urgente de dinheiro?</label>
+        <label><input type="checkbox"> Eu confirmei por outro meio antes de agir?</label>
+
+        <div class="risk-meter">
+          <div id="riskBar"></div>
+        </div>
+        <p id="riskText">Marque os itens para avaliar o risco.</p>
+      </div>
+    </section>
+
+    <section id="certificado" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Conclusão</p>
+        <h2>Certificado simbólico.</h2>
+        <p>Ao finalizar o jogo, você pode copiar uma mensagem de conclusão para registrar a aprendizagem.</p>
+      </div>
+
+      <div class="certificate reveal" id="certificate">
+        <div class="seal">🛡️</div>
+        <p class="eyebrow">Guardiões do Zap</p>
+        <h3 id="certificateTitle">Treinamento ainda não concluído</h3>
+        <p id="certificateText">
+          Complete as missões para liberar seu certificado simbólico de Guardião Digital.
+        </p>
+        <div class="certificate-actions">
+          <button class="button primary" id="copyCertificate">Copiar conclusão</button>
+          <button class="button ghost" id="resetProgress">Resetar progresso</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Projeto educativo independente. Não é afiliado, patrocinado ou endossado pelo WhatsApp/Meta.
+      Use como apoio de conscientização e inclusão digital.
+    </p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
